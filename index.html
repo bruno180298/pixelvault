@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PixelVault, uma loja fictícia de videojogos para PC e consolas.">
+  <title>PixelVault — Loja de videojogos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./config.js" defer></script>
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap bar">
+      <a class="brand" href="./" aria-label="PixelVault, início"><span class="mark" aria-hidden="true">▶</span> PIXEL<span class="violet">VAULT</span></a>
+      <nav aria-label="Navegação principal">
+        <a href="#catalogo">Catálogo</a>
+        <a href="#como-funciona">Como funciona</a>
+        <button type="button" class="plain" data-chat>Apoio</button>
+      </nav>
+      <button class="button secondary bag" id="open-cart" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h16l1 13H3L4 8Z M8 9V6a4 4 0 0 1 8 0v3"/></svg>
+        <span>Carrinho</span><span id="cart-count" class="count" aria-live="polite">0</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> EM DESTAQUE · RIFT CIRCUIT</p>
+          <h1 id="hero-title">O próximo nível<br> começa <em>aqui.</em></h1>
+          <p>Acelera por cidades neon, atravessa fendas elétricas e domina o circuito. Descobre o teu próximo jogo para PC ou consola.</p>
+          <a class="button primary" href="#catalogo">Explorar jogos</a>
+        </div>
+        <div class="hero-caption"><span></span> RIFT CIRCUIT <small>Corridas futuristas</small></div>
+      </div>
+    </section>
+
+    <section class="wrap catalog" id="catalogo" aria-labelledby="catalog-title">
+      <div class="section-head">
+        <div><p class="eyebrow">CATÁLOGO DIGITAL</p><h2 id="catalog-title">Escolhe a tua próxima aventura</h2></div>
+        <div class="filters" role="group" aria-label="Filtrar por plataforma">
+          <button type="button" data-filter="all" aria-pressed="true">Todos</button>
+          <button type="button" data-filter="pc" aria-pressed="false">PC</button>
+          <button type="button" data-filter="ps" aria-pressed="false">PlayStation</button>
+          <button type="button" data-filter="xbox" aria-pressed="false">Xbox</button>
+        </div>
+      </div>
+      <div class="games">
+        <article class="game" data-platform="pc xbox" data-title="Rift Circuit" data-price="2499">
+          <div class="cover cover-rift"><span>Corridas</span></div>
+          <div class="game-info"><p class="platforms">PC · XBOX</p><h3>Rift Circuit</h3><p>Corridas arcade num circuito de neon.</p>
+            <div class="game-action"><strong>24,99 €</strong><button type="button" class="button secondary add" aria-label="Adicionar Rift Circuit ao carrinho">Adicionar</button></div>
+          </div>
+        </article>
+        <article class="game" data-platform="pc ps" data-title="Dunas de Íon" data-price="1999">
+          <div class="cover cover-dunes"><span>Aventura</span></div>
+          <div class="game-info"><p class="platforms">PC · PLAYSTATION</p><h3>Dunas de Íon</h3><p>Ruínas antigas entre desertos elétricos.</p>
+            <div class="game-action"><strong>19,99 €</strong><button type="button" class="button secondary add" aria-label="Adicionar Dunas de Íon ao carrinho">Adicionar</button></div>
+          </div>
+        </article>
+        <article class="game" data-platform="ps xbox" data-title="Eco Abissal" data-price="2999">
+          <div class="cover cover-echo"><span>Mistério</span></div>
+          <div class="game-info"><p class="platforms">PLAYSTATION · XBOX</p><h3>Eco Abissal</h3><p>Um sinal estranho vem das profundezas.</p>
+            <div class="game-action"><strong>29,99 €</strong><button type="button" class="button secondary add" aria-label="Adicionar Eco Abissal ao carrinho">Adicionar</button></div>
+          </div>
+        </article>
+      </div>
+      <p id="cart-announcement" class="sr-only" role="status"></p>
+    </section>
+
+    <section class="wrap how" id="como-funciona" aria-labelledby="how-title">
+      <div>
+        <h2 id="how-title">Como funciona</h2>
+        <p>Escolhe a tua plataforma, adiciona jogos ao carrinho e experimenta a compra. A PixelVault é uma loja fictícia e a compra é uma simulação.</p>
+      </div>
+      <button class="button secondary" type="button" data-chat>Falar com o apoio</button>
+    </section>
+  </main>
+
+  <footer class="wrap footer">
+    <a class="brand" href="./"><span class="mark" aria-hidden="true">▶</span> PIXEL<span class="violet">VAULT</span></a>
+    <p>Loja de videojogos fictícia</p>
+  </footer>
+
+  <dialog id="cart" aria-labelledby="cart-title">
+    <div class="panel-head"><h2 id="cart-title">O teu carrinho</h2><form method="dialog"><button class="icon-button" aria-label="Fechar carrinho">×</button></form></div>
+    <div class="cart-body">
+      <ul id="cart-items"></ul>
+      <p id="cart-empty">O carrinho está vazio.</p>
+      <div id="cart-summary" hidden>
+        <p class="total"><span>Total</span><strong id="cart-total"></strong></p>
+        <button id="checkout" class="button primary" type="button">Simular compra</button>
+      </div>
+      <p id="checkout-status" role="status"></p>
+    </div>
+  </dialog>
+
+  <aside class="chat" id="chat" aria-labelledby="chat-title" hidden>
+    <div class="panel-head">
+      <div><h2 id="chat-title">Apoio PixelVault</h2><p id="chat-mode"></p></div>
+      <button class="icon-button" id="close-chat" type="button" aria-label="Fechar chat">×</button>
+    </div>
+    <div class="chat-log" id="chat-log" role="log" aria-label="Mensagens do chat">
+      <p class="message agent">Olá! Posso ajudar-te a encontrar um jogo ou tirar dúvidas sobre a loja.</p>
+    </div>
+    <div class="quick-replies">
+      <button type="button" data-prompt="Que plataformas estão disponíveis?">Plataformas</button>
+      <button type="button" data-prompt="Como funciona a compra?">Como comprar</button>
+    </div>
+    <form class="chat-form" id="chat-form">
+      <label class="sr-only" for="chat-input">A tua mensagem</label>
+      <input id="chat-input" placeholder="Escreve uma mensagem..." maxlength="500" required autocomplete="off">
+      <button class="button primary" type="submit" aria-label="Enviar mensagem"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 18-8-8 18-2-8-8-2Zm8 2 5-5"/></svg></button>
+    </form>
+  </aside>
+  <button id="chat-toggle" type="button" class="chat-toggle" aria-expanded="false" aria-controls="chat">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-8.5 8.5H4l1.6-4A8.5 8.5 0 1 1 21 11.5Z M8 12h8"/></svg>
+    Chat de apoio
+  </button>
+</body>
+</html>
